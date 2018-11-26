@@ -15,7 +15,7 @@ export function LandingPage(props) {
             <h2>Welcome to Aprendizaje</h2>
             <p>Learn Spanish at your own pace ... and actually remember it!</p>
             <LoginForm />
-            <Link to="/register">Register</Link>
+            <p>Don't have an account yet? <Link to="/register">Register</Link></p>
         </div>
     );
 }

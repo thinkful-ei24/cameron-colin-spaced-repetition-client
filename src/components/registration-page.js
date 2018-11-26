@@ -15,7 +15,7 @@ export function RegistrationPage(props) {
             <h2>Register for Aprendizaje!</h2>
             <p>Learn Spanish at your own pace ... and actually remember it!</p>
             <RegistrationForm />
-            <Link to="/">Login</Link>
+            <p>Already have an account? <Link to="/">Login</Link></p>
         </div>
     );
 }
