@@ -16,18 +16,26 @@ export class Dashboard extends React.Component {
     render() {
         let nameDisplay;
         if(this.newLogIn){
-            nameDisplay = <div>Welcome {this.props.username}</div>
+            nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
         }
         return (
-            <div className="dashboard">
-                <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div>
+            <main role="main" className="dashboard row">
                 {nameDisplay}
-                <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
+                <div className="flashcard">
+                  AQUA
                 </div>
-            </div>
+                <form>
+                  <label for="answer">
+                    <input
+                      type="text"
+                      name="answer"
+                      id="answer"
+                      placeholder="english translation" />
+                  </label>
+                      <button type="button">submit</button>
+                      <button type="button">skip</button>
+                    </form>
+            </main>
         );
     }
 }
