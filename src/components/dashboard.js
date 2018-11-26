@@ -8,7 +8,7 @@ export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
     }
-    // Only display welcome message on initial load
+    // Welcome message will only display on initial load
     componentDidUpdate(){
         this.newLogIn = false;
     }
