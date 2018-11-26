@@ -12,7 +12,7 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-            <h2>Welcome to Aprendizaje</h2>
+            <h2>Welcome to Echar Agua al Mar</h2>
             <p>Learn Spanish at your own pace ... and actually remember it!</p>
             <LoginForm />
             <p>Don't have an account yet? <Link to="/register">Register</Link></p>
