@@ -4,16 +4,13 @@ import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
 
 export class Dashboard extends React.Component {
+    newLogIn = true;
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
     }
-    newLogIn;
-    componentDidUpdate(prevProps){
-        if(this.props.currentUser && !prevProps.currentUser){
-            this.newLogIn = true;
-        }else{
-            this.newLogIn = false;
-        }
+    // Only display welcome message on initial load
+    componentDidUpdate(){
+        this.newLogIn = false;
     }
 
     render() {
