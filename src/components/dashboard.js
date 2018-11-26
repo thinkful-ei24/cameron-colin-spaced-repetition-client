@@ -1,47 +1,79 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import { fetchProtectedData } from '../actions/protected-data';
+import { translations } from './data';
+import './dashboard.css'
 
 export class Dashboard extends React.Component {
     newLogIn = true;
+    constructor(props) {
+        super(props);
+        this.state = {
+            translation: '',
+            feedback: 'neutral'
+        }
+
+    }
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
     }
     // Welcome message will only display on initial load
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.newLogIn = false;
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        if (this.state.translation.toUpperCase() === translations[0].english.toUpperCase()) {
+            this.setState({ feedback: 'correct' });
+        } else {
+            this.setState({
+                feedback: 'incorrect',
+                translation: translations[0].english.toUpperCase()
+            });
+        }
+    }
+    handleChange = (e) => {
+        this.setState({ translation: e.target.value });
+    }
+
+    skipButton(){
+        this.setState({feedback: 'neutral'})
     }
 
     render() {
         let nameDisplay;
-        if(this.newLogIn){
+        if (this.newLogIn) {
             nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
         }
+
         return (
             <main role="main" className="dashboard row">
                 {nameDisplay}
-                <div className="flashcard">
-                  AQUA
+                <div className="flashcard" className={this.state.feedback}>
+                    <p>{translations[0].spanish.toUpperCase()}</p>
                 </div>
-                <form>
-                  <label for="answer">
-                    <input
-                      type="text"
-                      name="answer"
-                      id="answer"
-                      placeholder="english translation" />
-                  </label>
-                      <button type="button">submit</button>
-                      <button type="button">skip</button>
-                    </form>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <label htmlFor="answer">
+                        <input
+                            type="text"
+                            name="answer"
+                            id="answer"
+                            placeholder="english translation"
+                            value={this.state.translation}
+                            onChange={this.handleChange} />
+                    </label>
+                    <button type="submit">submit</button>
+                    <button type="button" onClick={() => this.skipButton()}>skip</button>
+                </form>
             </main>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const {currentUser} = state.auth;
+    const { currentUser } = state.auth;
     return {
         username: state.auth.currentUser.username,
         protectedData: state.protectedData.data,
