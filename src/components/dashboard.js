@@ -7,14 +7,26 @@ export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
     }
+    newLogIn;
+    componentDidUpdate(prevProps){
+        if(this.props.currentUser && !prevProps.currentUser){
+            this.newLogIn = true;
+        }else{
+            this.newLogIn = false;
+        }
+    }
 
     render() {
+        let nameDisplay;
+        if(this.newLogIn){
+            nameDisplay = <div>Welcome {this.props.username}</div>
+        }
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
                     Username: {this.props.username}
                 </div>
-                <div className="dashboard-name">Name: {this.props.name}</div>
+                {nameDisplay}
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
@@ -27,8 +39,8 @@ const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
         username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData.data
+        protectedData: state.protectedData.data,
+        currentUser: state.auth.currentUser
     };
 };
 
