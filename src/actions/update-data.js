@@ -14,7 +14,7 @@ export const incorrectGuess = () => ({
 
 export const updateData = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/protected`, {
+  return fetch(`${API_BASE_URL}/questions`, {
     method: 'POST',
     headers: {
       // Provide our auth token as credentials
