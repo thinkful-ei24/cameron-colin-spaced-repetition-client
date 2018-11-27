@@ -4,7 +4,11 @@ import {
 } from '../actions/protected-data';
 
 const initialState = {
-    data: '',
+    data:   {
+        spanish: 'agua',
+        english: 'water',
+        next: '',
+      },
     error: null
 };
 

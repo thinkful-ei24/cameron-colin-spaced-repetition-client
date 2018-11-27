@@ -11,7 +11,8 @@ export class Dashboard extends React.Component {
         super(props);
         this.state = {
             translation: '',
-            feedback: 'neutral'
+            feedback: 'neutral',
+            submitted: false
         }
 
     }
@@ -25,12 +26,16 @@ export class Dashboard extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.translation.toUpperCase() === translations[0].english.toUpperCase()) {
-            this.setState({ feedback: 'correct' });
+        if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
+            this.setState({
+                feedback: 'correct',
+                submitted: true
+            });
         } else {
             this.setState({
                 feedback: 'incorrect',
-                translation: translations[0].english.toUpperCase()
+                translation: this.props.protectedData.english.toUpperCase(),
+                submitted: true
             });
         }
     }
@@ -38,8 +43,8 @@ export class Dashboard extends React.Component {
         this.setState({ translation: e.target.value });
     }
 
-    skipButton(){
-        this.setState({feedback: 'neutral'})
+    skipButton() {
+        this.setState({ feedback: 'neutral' })
     }
 
     render() {
@@ -47,12 +52,22 @@ export class Dashboard extends React.Component {
         if (this.newLogIn) {
             nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
         }
+        let cardContent;
+        if (this.state.submitted) {
+            cardContent = <p>
+                {`${this.props.protectedData.spanish.toUpperCase()}/${this.props.protectedData.english.toUpperCase()}`}
+            </p>
+        } else {
+            cardContent = <p>
+                {this.props.protectedData.spanish.toUpperCase()}
+            </p>
+        }
 
         return (
             <main role="main" className="dashboard row">
                 {nameDisplay}
                 <div className="flashcard" className={this.state.feedback}>
-                    <p>{translations[0].spanish.toUpperCase()}</p>
+                    {cardContent}
                 </div>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label htmlFor="answer">
@@ -64,7 +79,7 @@ export class Dashboard extends React.Component {
                             value={this.state.translation}
                             onChange={this.handleChange} />
                     </label>
-                    <button type="submit">submit</button>
+                    <button type="submit" disabled={this.state.submitted}>submit</button>
                     <button type="button" onClick={() => this.skipButton()}>skip</button>
                 </form>
             </main>

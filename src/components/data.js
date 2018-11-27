@@ -1,7 +1,8 @@
 export const translations = [
   {
     spanish: 'agua',
-    english: 'water'
+    english: 'water',
+    next: '',
   },  {
     spanish: 'hola',
     english: 'hello'
