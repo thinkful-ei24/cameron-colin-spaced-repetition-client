@@ -18,7 +18,7 @@ export class Dashboard extends React.Component {
   }
   componentDidMount() {
     // should fetch HEAD
-    //this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchProtectedData());
   }
   // Welcome message will only display on initial load
   componentDidUpdate() {
@@ -27,7 +27,7 @@ export class Dashboard extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(updateProtectedData(this.props.protectedData.question, this.props.protectedData.answer))
+    this.props.dispatch(updateProtectedData(this.props.protectedData.question, this.state.translation))
 
     // if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
     //   this.setState({
@@ -42,7 +42,7 @@ export class Dashboard extends React.Component {
     //   this.props.dispatch(incorrectGuess());
     // }
     this.props.dispatch(updateData());
-    this.setState({translation: ''});
+    this.setState({translation: '', submitted: true});
   }
 
   handleChange = (e) => {
@@ -55,6 +55,7 @@ export class Dashboard extends React.Component {
       translation: '',
       submitted: false,
     })
+    this.props.dispatch(fetchProtectedData());
   }
 
 
@@ -66,9 +67,9 @@ export class Dashboard extends React.Component {
       nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
     }
     let cardContent;
-    if (this.state.submitted) {
+    if (this.state.submitted && this.props.protectedData.answer) {
       cardContent = <p>
-        {`${this.props.protectedData.question.toUpperCase()}/${this.props.protectedData.english.toUpperCase()}`}
+        {`${this.props.protectedData.question.toUpperCase()} / ${this.props.protectedData.answer.toUpperCase()}`}
       </p>
       } else {
         cardContent = <p>

@@ -68,7 +68,7 @@ export default function reducer(state = initialState, action) {
     } else if(action.type === SEND_ANSWER_SUCCESS){
       return Object.assign({}, state, {
         lodaing: false,
-        data: action.data
+        data: Object.assign({}, state.data, action.data)
       })
     } else if(action.type === SEND_ANSWER_ERROR){
       return Object.assign({}, state, {

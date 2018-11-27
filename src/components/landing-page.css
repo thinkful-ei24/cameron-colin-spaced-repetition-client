@@ -1,4 +1,19 @@
-.welcome-message {
+.center {
     display: flex;
     justify-content: center;
+    text-align: center;
+}
+.welcome-message {
+    border: 2px solid grey;
+    height: 300px;
+    width: 80%;
+    padding-top: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#get-account {
+    font-size: 0.8em;
 }
