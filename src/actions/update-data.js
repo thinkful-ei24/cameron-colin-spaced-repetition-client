@@ -1,6 +1,6 @@
-import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
-import {fetchProtectedDataError} from './protected-data';
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
+import { fetchProtectedDataError } from './protected-data';
 
 export const CORRECT_GUESS = 'CORRECT_GUESS';
 export const correctGuess = () => ({
@@ -17,16 +17,16 @@ export const updateData = () => (dispatch, getState) => {
   return fetch(`${API_BASE_URL}/protected`, {
     method: 'POST',
     headers: {
-        // Provide our auth token as credentials
-        Authorization: `Bearer ${authToken}`
+      // Provide our auth token as credentials
+      Authorization: `Bearer ${authToken}`
     },
     body: {
       data: getState().protectedData.data
     }
-})
-.then(res => normalizeResponseErrors(res))
-.then(res => res.json())
-.catch(err => {
-  dispatch(fetchProtectedDataError(err));
-});
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => {
+      dispatch(fetchProtectedDataError(err));
+    });
 }

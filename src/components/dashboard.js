@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
 import { translations } from './data';
-import {correctGuess, incorrectGuess} from '../actions/update-data';
+import {correctGuess, incorrectGuess, updateData} from '../actions/update-data';
 import './dashboard.css'
 
 export class Dashboard extends React.Component {
@@ -38,6 +38,7 @@ export class Dashboard extends React.Component {
             });
             this.props.dispatch(incorrectGuess());
         }
+        this.props.dispatch(updateData());
     }
     handleChange = (e) => {
         this.setState({ translation: e.target.value });
