@@ -24,28 +24,33 @@ export class Dashboard extends React.Component {
         this.newLogIn = false;
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
-            this.setState({
-                feedback: 'correct',
-                submitted: true
-            });
-        } else {
-            this.setState({
-                feedback: 'incorrect',
-                translation: this.props.protectedData.english.toUpperCase(),
-                submitted: true
-            });
-        }
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
+      this.setState({
+        feedback: 'correct',
+        submitted: true
+      });
+    } else {
+      this.setState({
+        feedback: 'incorrect',
+        translation: this.props.protectedData.english.toUpperCase(),
+        submitted: true
+      });
     }
-    handleChange = (e) => {
-        this.setState({ translation: e.target.value });
-    }
+    this.setState({translation: ''});
+  }
 
-    skipButton() {
-        this.setState({ feedback: 'neutral' })
-    }
+  handleChange = (e) => {
+    this.setState({ translation: e.target.value });
+  }
+
+  skipButton() {
+    this.setState({
+      feedback: 'neutral',
+      submitted: false
+    })
+  }
 
     render() {
         let nameDisplay;
