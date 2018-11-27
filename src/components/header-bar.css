@@ -2,3 +2,9 @@ h1 {
     text-align: center;
     color: blue;
 }
+
+#logout {
+    float: right;
+    position: relative;
+    bottom: 46px;
+}

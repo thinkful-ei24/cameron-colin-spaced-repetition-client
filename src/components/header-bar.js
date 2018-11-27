@@ -5,30 +5,33 @@ import {clearAuthToken} from '../local-storage';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
-    logOut() {
-        this.props.dispatch(clearAuth());
-        clearAuthToken();
-    }
+  logOut() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
 
-    render() {
-        // Only render the log out button if we are logged in
-        let logOutButton;
-        if (this.props.loggedIn) {
-            logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
-            );
-        }
-        return (
-            <div className="header-bar row">
-                <h1>Echar Agua al Mar</h1>
-                {logOutButton}
-            </div>
-        );
+  render() {
+    // Only render the log out button if we are logged in
+    let logOutButton;
+    if (this.props.loggedIn) {
+      logOutButton = (
+        <button
+          id="logout"
+          onClick={() => this.logOut()}>Log out
+        </button>
+      );
     }
-}
+    return (
+      <div className="header-bar row">
+        <h1>Echar Agua al Mar</h1>
+        {logOutButton}
+      </div>
+    );
+  }
+  }
 
-const mapStateToProps = state => ({
+  const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
-});
+  });
 
-export default connect(mapStateToProps)(HeaderBar);
+  export default connect(mapStateToProps)(HeaderBar);

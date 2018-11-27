@@ -29,3 +29,41 @@ export const fetchProtectedData = () => (dispatch, getState) => {
             dispatch(fetchProtectedDataError(err));
         });
 };
+
+export const SEND_ANSWER_REQUEST = 'SEND_ANSWER_REQUEST'
+export const sendAnswerRequest = () => ({
+  type: SEND_ANSWER_REQUEST
+})
+
+export const SEND_ANSWER_SUCCESS = 'SEND_ANSWER_SUCCESS'
+export const sendAnswerSuccess = (data) => ({
+  type: SEND_ANSWER_SUCCESS,
+  data
+})
+
+export const SEND_ANSWER_ERROR = 'SEND_ANSWER_ERROR'
+export const sendAnswerError = (error) => ({
+  type: SEND_ANSWER_ERROR,
+  error
+})
+
+export const updateProtectedData = (_question, _answer) => (dispatch, getState) => {
+  const data = {question: _question.toUpperCase(), answer: _answer.toUpperCase()}
+  const authToken = getState().authToken;
+  dispatch(sendAnswerRequest())
+  return fetch(`API_BASE_URL}/questions`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(data => {
+      dispatch(sendAnswerSuccess(data))
+    })
+    .catch(err => {
+      dispatch(sendAnswerError(err))
+    })
+}
