@@ -17,6 +17,7 @@ const initialState = {
         correct: 0,
         next: '',
       },
+    feedback: 'neutral',
     error: null
 };
 
@@ -39,12 +40,20 @@ export default function reducer(state = initialState, action) {
             correct,
             score
         });
+        return Object.assign({}, state, {
+            data: newData,
+            feedback: 'correct'
+        });
     } else if(action.type === INCORRECT_GUESS){
         const guesses = state.data.guesses + 1;
         const score = Math.max(1, state.data.score-1);
         let newData = Object.assign({}, state.data, {
             guesses,
             score
+        });
+        return Object.assign({}, state, {
+            data: newData,
+            feedback: 'incorrect'
         });
     }
     return state;
