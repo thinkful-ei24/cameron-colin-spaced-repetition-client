@@ -17,6 +17,7 @@ export class Dashboard extends React.Component {
 
   }
   componentDidMount() {
+    // should fetch HEAD
     //this.props.dispatch(fetchProtectedData());
   }
   // Welcome message will only display on initial load
