@@ -1,6 +1,9 @@
 import {
-    FETCH_PROTECTED_DATA_SUCCESS,
-    FETCH_PROTECTED_DATA_ERROR
+  FETCH_PROTECTED_DATA_SUCCESS,
+  FETCH_PROTECTED_DATA_ERROR,
+  SEND_ANSWER_REQUEST,
+  SEND_ANSWER_SUCCESS,
+  SEND_ANSWER_ERROR
 } from '../actions/protected-data';
 
 import {
@@ -9,16 +12,17 @@ import {
 } from '../actions/update-data';
 
 const initialState = {
-    data:   {
-        spanish: 'agua',
-        english: 'water',
-        score: 1,
-        guesses: 0,
-        correct: 0,
-        next: '',
-      },
-    feedback: 'neutral',
-    error: null
+  data:   {
+    question: 'agua',
+    answer: 'water',
+    score: 1,
+    guesses: 0,
+    correct: 0,
+    next: '',
+  },
+  feedback: 'neutral',
+  error: null,
+  loading: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -56,6 +60,21 @@ export default function reducer(state = initialState, action) {
             data: newData,
             feedback: 'incorrect'
         });
+    } else if(action.type === SEND_ANSWER_REQUEST){
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      })
+    } else if(action.type === SEND_ANSWER_SUCCESS){
+      return Object.assign({}, state, {
+        lodaing: false,
+        data: action.data
+      })
+    } else if(action.type === SEND_ANSWER_ERROR){
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+      })
     }
     return state;
 }
