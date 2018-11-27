@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchProtectedData } from '../actions/protected-data';
 import { translations } from './data';
+import {correctGuess, incorrectGuess, updateData} from '../actions/update-data';
 import './dashboard.css'
 
 export class Dashboard extends React.Component {
@@ -11,7 +12,6 @@ export class Dashboard extends React.Component {
         super(props);
         this.state = {
             translation: '',
-            feedback: 'neutral',
             submitted: false
         }
 
@@ -28,16 +28,17 @@ export class Dashboard extends React.Component {
         e.preventDefault();
         if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
             this.setState({
-                feedback: 'correct',
                 submitted: true
             });
+            this.props.dispatch(correctGuess());
         } else {
             this.setState({
-                feedback: 'incorrect',
                 translation: this.props.protectedData.english.toUpperCase(),
                 submitted: true
             });
+            this.props.dispatch(incorrectGuess());
         }
+        this.props.dispatch(updateData());
     }
     handleChange = (e) => {
         this.setState({ translation: e.target.value });
@@ -62,11 +63,19 @@ export class Dashboard extends React.Component {
                 {this.props.protectedData.spanish.toUpperCase()}
             </p>
         }
+        let percentageCorrect;
+        if(this.props.protectedData.guesses === 0){
+            percentageCorrect = 'No score yet for this question';
+        }else{
+            let percent = Math.round(this.props.protectedData.correct/this.props.protectedData.guesses*100);
+            percentageCorrect = `Percentage Correct for this question: ${percent}%`;
+        }
 
         return (
             <main role="main" className="dashboard row">
                 {nameDisplay}
-                <div className="flashcard" className={this.state.feedback}>
+                <div className="percentage">{percentageCorrect}</div>
+                <div className="flashcard" className={this.props.feedback}>
                     {cardContent}
                 </div>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -92,7 +101,8 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         protectedData: state.protectedData.data,
-        currentUser: state.auth.currentUser
+        currentUser: state.auth.currentUser,
+        feedback: state.protectedData.feedback
     };
 };
 
