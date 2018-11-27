@@ -18,7 +18,7 @@ export class Dashboard extends React.Component {
   }
   componentDidMount() {
     // should fetch HEAD
-    //this.props.dispatch(fetchProtectedData());
+    this.props.dispatch(fetchProtectedData());
   }
   // Welcome message will only display on initial load
   componentDidUpdate() {
@@ -59,8 +59,7 @@ export class Dashboard extends React.Component {
 
 
   render() {
-  console.log(this.props.protectedData.question)
-  console.log(this.props.protectedData.answer)
+  console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
