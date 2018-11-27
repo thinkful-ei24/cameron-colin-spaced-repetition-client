@@ -49,9 +49,9 @@ export const sendAnswerError = (error) => ({
 
 export const updateProtectedData = (_question, _answer) => (dispatch, getState) => {
   const data = {question: _question.toUpperCase(), answer: _answer.toUpperCase()}
-  const authToken = getState().authToken;
+  const authToken = getState().auth.authToken;
   dispatch(sendAnswerRequest())
-  return fetch(`API_BASE_URL}/questions`, {
+  return fetch(`${API_BASE_URL}/questions`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -60,10 +60,11 @@ export const updateProtectedData = (_question, _answer) => (dispatch, getState) 
     body: JSON.stringify(data)
   })
     .then(result => result.json())
-    .then(data => {
-      dispatch(sendAnswerSuccess(data))
+    .then(result => {
+      dispatch(sendAnswerSuccess(result))
     })
     .catch(err => {
+      console.log('hitting an error')
       dispatch(sendAnswerError(err))
     })
 }
