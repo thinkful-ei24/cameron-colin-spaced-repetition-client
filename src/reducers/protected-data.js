@@ -4,12 +4,15 @@ import {
 } from '../actions/protected-data';
 
 const initialState = {
-    data:   {
-        spanish: 'agua',
-        english: 'water',
-        next: '',
-      },
-    error: null
+  data:   {
+    spanish: 'agua',
+    english: 'water',
+    next: '',
+    score: 1,
+    guesses: 0,
+    correct: 0
+  },
+  error: null,
 };
 
 export default function reducer(state = initialState, action) {
