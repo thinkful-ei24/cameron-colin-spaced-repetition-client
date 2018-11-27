@@ -24,14 +24,14 @@ export class Dashboard extends React.Component {
         this.newLogIn = false;
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
-            this.setState({
-                submitted: true
-            });
-            this.props.dispatch(correctGuess());
-        } else {
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
+      this.setState({
+        submitted: true
+      });
+      this.props.dispatch(correctGuess());
+     } else {
             this.setState({
                 translation: this.props.protectedData.english.toUpperCase(),
                 submitted: true
@@ -40,13 +40,18 @@ export class Dashboard extends React.Component {
         }
         this.props.dispatch(updateData());
     }
-    handleChange = (e) => {
-        this.setState({ translation: e.target.value });
-    }
+  handleChange = (e) => {
+    this.setState({ translation: e.target.value });
+    this.setState({translation: ''});
+  }
 
-    skipButton() {
-        this.setState({ feedback: 'neutral' })
-    }
+
+  skipButton() {
+    this.setState({
+      feedback: 'neutral',
+      submitted: false
+    })
+  }
 
     render() {
         let nameDisplay;

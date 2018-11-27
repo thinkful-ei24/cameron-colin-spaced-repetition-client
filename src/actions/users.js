@@ -25,7 +25,7 @@ export const registerUser = user => dispatch => {
             }else{
                 return Promise.reject(
                     new SubmissionError({
-                        ['username']: message
+                        username: message
                     })
                 )
             }
