@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ProgressQuestion from './progress-question.js';
 import {getUserProgress} from '../actions/user-progress.js';
+import './user-progress.css';
 
 export class UserProgress extends React.Component {
   constructor(props) {
@@ -22,9 +23,9 @@ export class UserProgress extends React.Component {
     })
 
     return (
-      <div>
+      <div className="row">
         <h2>user progress</h2>
-        <ul>{listOfWords}</ul>
+        <ul className="row">{listOfWords}</ul>
       </div>
     )
   }
