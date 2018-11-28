@@ -82,13 +82,14 @@ export class Dashboard extends React.Component {
         let percent = Math.round(this.props.protectedData.correct/this.props.protectedData.guesses*100);
         percentageCorrect = `Percentage Correct for this question: ${percent}%`;
       }
+      console.log(this.props.feedback);
 
       return (
         <main role="main" className="dashboard row">
           {nameDisplay}
           <div className="col-6 card-container">
           <div className="percentage">{percentageCorrect}</div>
-            <div className={this.props.feedback} className="flashcard">
+            <div className={`flashcard ${this.props.feedback}`}>
               {cardContent}
             </div>
           </div>

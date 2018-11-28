@@ -66,9 +66,11 @@ export default function reducer(state = initialState, action) {
         error: null
       })
     } else if(action.type === SEND_ANSWER_SUCCESS){
+        console.log(action.data);
       return Object.assign({}, state, {
-        lodaing: false,
-        data: Object.assign({}, state.data, action.data)
+        loading: false,
+        data: Object.assign({}, state.data, action.data),
+        feedback: action.data.feedback
       })
     } else if(action.type === SEND_ANSWER_ERROR){
       return Object.assign({}, state, {
