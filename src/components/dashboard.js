@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import UserProgress from './user-progress.js';
 import { fetchProtectedData, updateProtectedData } from '../actions/protected-data';
 //import { translations } from './data';
 import { updateData } from '../actions/update-data';
@@ -105,6 +106,7 @@ export class Dashboard extends React.Component {
             <button type="submit" disabled={this.state.submitted}>submit</button>
             <button type="button" onClick={() => this.skipButton()}>skip</button>
           </form>
+          <UserProgress />
         </main>
       );
     }
