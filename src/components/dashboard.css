@@ -1,17 +1,21 @@
 .correct{
-    background-color: green;
+    background-color: #c0efa7;
+    border: 2px solid #1f5601;
+    color: #1f5601;;
 }
 
 .incorrect{
-    background-color: red;
+    background-color: #f4a99f;
+    border: 2px solid #701205;
+    color: #701205;;
 }
 
 .neutral{
-    background-color: #F0F7F4;
+    background-color: #EEF5DB;
+    border: 2px solid #4F6367;
 }
 
 .flashcard {
-    border: 2px solid #705D56;
     height: 150px;
     width: 95%;
     padding: 12px;
@@ -23,6 +27,7 @@
     border-radius: 8px;
     font-weight: bold;
     font-size: 1.8em;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .percentage {
@@ -33,14 +38,15 @@
 .card-container {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #99E1D9;
-    border: 2px solid #705D56;
+    background-color: #EEF5DB;
+    border: 2px solid #4F6367;
     max-width: 500px;
     margin: 0 auto;
 }
 
 .name{
-    margin: 10px;
+    margin: 5px;
+    font-size: 20px;
 }
 
 .name p{
@@ -71,7 +77,17 @@
 
 .button-holder button{
     width: 50%;
-    height: 35px;   
+    height: 35px;
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+    border: 1px solid #EEF5DB;
+    border-radius: 5%;
+}
+
+
+.button-holder button:disabled{
+    background-color: rgb(50, 41, 47, .3);
+    color: #EEF5DB;
 }
 
 @media only screen and (min-width: 640px){
@@ -82,6 +98,9 @@
      .button-holder button{
         width: 50%;
         height: 50px;   
+    }
+    .name{
+        font-size: 30px;
     }
 }
 
