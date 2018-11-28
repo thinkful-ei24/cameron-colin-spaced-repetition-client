@@ -50,4 +50,39 @@
 .answer-form{
     max-width: 500px;
     margin: 10px auto;
+    padding: 5px;   
 }
+
+#answer{
+    height: 35px;
+    font-size: 25px;
+    max-width: 350px;
+
+}
+
+.input-holder{
+    text-align: center;
+}
+
+.button-holder{
+    max-width: 350px;
+    margin: 5px auto;
+}
+
+.button-holder button{
+    width: 50%;
+    height: 35px;   
+}
+
+@media only screen and (min-width: 640px){
+    #answer{
+        height: 50px;
+        font-size: 35px;
+     } 
+     .button-holder button{
+        width: 50%;
+        height: 50px;   
+    }
+}
+
+
