@@ -63,7 +63,7 @@ export class Dashboard extends React.Component {
   console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
-      nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
+      nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
     }
     let cardContent;
     if (this.state.submitted && this.props.protectedData.answer) {
@@ -87,13 +87,13 @@ export class Dashboard extends React.Component {
       return (
         <main role="main" className="dashboard row">
           {nameDisplay}
-          <div className="col-6 card-container">
+          <div className="card-container">
           <div className="percentage">{percentageCorrect}</div>
             <div className={`flashcard ${this.props.feedback}`}>
               {cardContent}
             </div>
           </div>
-          <form onSubmit={(e) => this.handleSubmit(e)}>
+          <form className="answer-form" onSubmit={(e) => this.handleSubmit(e)}>
             <label htmlFor="answer">
               <input
                 type="text"
@@ -103,8 +103,8 @@ export class Dashboard extends React.Component {
                 value={this.state.translation}
                 onChange={this.handleChange} />
             </label>
-            <button type="submit" disabled={this.state.submitted}>submit</button>
-            <button type="button" onClick={() => this.skipButton()}>skip</button>
+            <button type="submit" disabled={this.state.submitted}>Submit</button>
+            <button type="button" disabled={!this.state.submitted} onClick={() => this.skipButton()}>Next</button>
           </form>
         </main>
       );

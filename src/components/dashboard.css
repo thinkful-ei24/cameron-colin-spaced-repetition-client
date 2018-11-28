@@ -13,7 +13,7 @@
 .flashcard {
     border: 2px solid #705D56;
     height: 150px;
-    width: 300px;
+    width: 95%;
     padding: 12px;
     margin-left: auto;
     margin-right: auto;
@@ -35,4 +35,19 @@
     padding-bottom: 20px;
     background-color: #99E1D9;
     border: 2px solid #705D56;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.name{
+    margin: 10px;
+}
+
+.name p{
+    text-align: center;
+}
+
+.answer-form{
+    max-width: 500px;
+    margin: 10px auto;
 }

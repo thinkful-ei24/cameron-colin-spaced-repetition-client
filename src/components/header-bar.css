@@ -1,10 +1,12 @@
 h1 {
     text-align: center;
     color: #32292F;
+    margin-top: 20px;
 }
 
 #logout {
     float: right;
-    position: relative;
-    bottom: 46px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
