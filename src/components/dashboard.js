@@ -51,17 +51,16 @@ export class Dashboard extends React.Component {
 
 
   skipButton() {
+    this.props.dispatch(fetchProtectedData());
     this.setState({
       translation: '',
       submitted: false,
     })
-    this.props.dispatch(fetchProtectedData());
   }
 
 
   render() {
-  console.log(this.props.protectedData.question)
-  console.log(this.props.protectedData.answer)
+  console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
@@ -87,9 +86,11 @@ export class Dashboard extends React.Component {
       return (
         <main role="main" className="dashboard row">
           {nameDisplay}
+          <div className="col-6 card-container">
           <div className="percentage">{percentageCorrect}</div>
-          <div className={this.props.feedback, 'flashcard'}>
-            {cardContent}
+            <div className={this.props.feedback} className="flashcard">
+              {cardContent}
+            </div>
           </div>
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <label htmlFor="answer">

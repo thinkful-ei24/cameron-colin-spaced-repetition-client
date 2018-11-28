@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import './landing-page.css';
 
 import RegistrationForm from './registration-form';
 
@@ -12,13 +13,14 @@ export function RegistrationPage(props) {
     }
     return (
         <div className="home row">
-          <div className="col-6">
-            <h2>Register for Echar Agua al Mar!</h2>
-            <p>Learn Spanish at your own pace ... and actually remember it!</p>
+          <div className="col-6 center">
+            <div className="welcome-message">
+              <h2>Register for Echar Agua al Mar!</h2>
+              <p>Learn Spanish at your own pace ... and actually remember it!</p>
+            </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 center">
             <RegistrationForm />
-            <p>Already have an account? <Link to="/">Login</Link></p>
           </div>
         </div>
     );
