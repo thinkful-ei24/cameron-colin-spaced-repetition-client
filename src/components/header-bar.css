@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     color: #32292F;
     margin-top: 20px;
+    font-family: 'Permanent Marker', cursive;
 }
 
 #logout {
@@ -9,4 +10,10 @@ h1 {
     position: absolute;
     top: 5px;
     right: 10px;
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+    border: 1px solid #32292F;
+    border-radius: 5%;
+    background-color: #32292F;
+    color: #F0F7F4;
 }

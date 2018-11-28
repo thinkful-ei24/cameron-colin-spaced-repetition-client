@@ -27,6 +27,7 @@
     border-radius: 8px;
     font-weight: bold;
     font-size: 1.8em;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .percentage {
@@ -44,7 +45,8 @@
 }
 
 .name{
-    margin: 10px;
+    margin: 5px;
+    font-size: 20px;
 }
 
 .name p{
@@ -75,7 +77,23 @@
 
 .button-holder button{
     width: 50%;
-    height: 35px;   
+    height: 35px;
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+    border: 1px solid #F0F7F4;
+    border-radius: 5%;
+    background-color: #32292F;
+    color: #F0F7F4;
+}
+
+.button-holder button:hover{
+    background-color: #F0F7F4;
+    color: #32292F;
+}
+
+.button-holder button:disabled{
+    background-color: rgb(50, 41, 47, .3);
+    color: #F0F7F4;
 }
 
 @media only screen and (min-width: 640px){
@@ -86,6 +104,9 @@
      .button-holder button{
         width: 50%;
         height: 50px;   
+    }
+    .name{
+        font-size: 30px;
     }
 }
 
