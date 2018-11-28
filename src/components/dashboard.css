@@ -1,17 +1,21 @@
 .correct{
-    background-color: green;
+    background-color: #c0efa7;
+    border: 2px solid #1f5601;
+    color: #1f5601;;
 }
 
 .incorrect{
-    background-color: red;
+    background-color: #f4a99f;
+    border: 2px solid #701205;
+    color: #701205;;
 }
 
 .neutral{
     background-color: #F0F7F4;
+    border: 2px solid #32292F;
 }
 
 .flashcard {
-    border: 2px solid #705D56;
     height: 150px;
     width: 95%;
     padding: 12px;
@@ -34,7 +38,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #99E1D9;
-    border: 2px solid #705D56;
+    border: 2px solid #32292F;
     max-width: 500px;
     margin: 0 auto;
 }
