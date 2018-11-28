@@ -13,7 +13,8 @@ export class Dashboard extends React.Component {
     super(props);
     this.state = {
       translation: '',
-      submitted: false
+      submitted: false,
+      showProgress: false
     }
 
   }
@@ -29,19 +30,6 @@ export class Dashboard extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.dispatch(updateProtectedData(this.props.protectedData.question, this.state.translation))
-
-    // if (this.state.translation.toUpperCase() === this.props.protectedData.english.toUpperCase()) {
-    //   this.setState({
-    //     submitted: true
-    //   });
-    //   this.props.dispatch(correctGuess());
-    // } else {
-    //   this.setState({
-    //     translation: this.props.protectedData.english.toUpperCase(),
-    //     submitted: true
-    //   });
-    //   this.props.dispatch(incorrectGuess());
-    // }
     this.props.dispatch(updateData());
     this.setState({ translation: '', submitted: true });
   }
@@ -56,6 +44,12 @@ export class Dashboard extends React.Component {
     this.setState({
       translation: '',
       submitted: false,
+    })
+  }
+
+  showProgress() {
+    this.setState({
+      showProgress: !this.state.showProgress
     })
   }
 
@@ -109,9 +103,10 @@ export class Dashboard extends React.Component {
           <div className="button-holder">
             <button type="submit" disabled={this.state.submitted}>Submit</button>
             <button type="button" disabled={!this.state.submitted} onClick={() => this.skipButton()}>Next</button>
+            <button type="button" onClick={() => this.showProgress()}>User Stats</button>
           </div>
         </form>
-        <UserProgress />
+        {this.state.showProgress && <UserProgress />}
       </main>
     );
   }
