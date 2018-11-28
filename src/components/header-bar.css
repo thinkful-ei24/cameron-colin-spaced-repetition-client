@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    color: #32292F;
+    color: #4F6367;
     margin-top: 20px;
     font-family: 'Permanent Marker', cursive;
 }
@@ -12,8 +12,6 @@ h1 {
     right: 10px;
     font-family: 'Kalam', cursive;
     font-size: 15px;
-    border: 1px solid #32292F;
+    border: 1px solid #F0F7F4;
     border-radius: 5%;
-    background-color: #32292F;
-    color: #F0F7F4;
 }

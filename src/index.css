@@ -2,8 +2,19 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Kalam', cursive;
-    background-color: #70ABAF;
-    color: #32292F;
+    background-color: #B8D8D8;
+    color: #4F6367;
+}
+
+button{
+    background-color: #4F6367;
+    color: #EEF5DB;
+    font-family: 'Kalam', cursive;
+}
+
+button:hover{
+    background-color: #EEF5DB;
+    color: #4F6367;
 }
 
 
