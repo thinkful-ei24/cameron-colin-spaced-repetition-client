@@ -103,9 +103,11 @@ export class Dashboard extends React.Component {
           <div className="button-holder">
             <button type="submit" disabled={this.state.submitted}>Submit</button>
             <button type="button" disabled={!this.state.submitted} onClick={() => this.skipButton()}>Next</button>
-            <button type="button" onClick={() => this.showProgress()}>User Stats</button>
           </div>
         </form>
+        <div className="progress-button-holder">
+          <button type="button" onClick={() => this.showProgress()}>User Stats</button>
+        </div>
         {this.state.showProgress && <UserProgress />}
       </main>
     );
