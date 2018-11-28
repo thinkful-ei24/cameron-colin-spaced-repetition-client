@@ -43,7 +43,7 @@ export class Dashboard extends React.Component {
     //   this.props.dispatch(incorrectGuess());
     // }
     this.props.dispatch(updateData());
-    this.setState({translation: '', submitted: true});
+    this.setState({ translation: '', submitted: true });
   }
 
   handleChange = (e) => {
@@ -61,57 +61,62 @@ export class Dashboard extends React.Component {
 
 
   render() {
-  console.log(this.props.protectedData)
+    console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
-      nameDisplay = <div className="col-12">Welcome {this.props.username}</div>
+      nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
     }
     let cardContent;
     if (this.state.submitted && this.props.protectedData.answer) {
       cardContent = <p>
         {`${this.props.protectedData.question.toUpperCase()} / ${this.props.protectedData.answer.toUpperCase()}`}
       </p>
-      } else {
-        cardContent = <p>
-          {this.props.protectedData.question.toUpperCase()}
-        </p>
-      }
-      let percentageCorrect;
-      if(this.props.protectedData.guesses === 0){
-        percentageCorrect = 'No score yet for this question';
-      }else{
-        let percent = Math.round(this.props.protectedData.correct/this.props.protectedData.guesses*100);
-        percentageCorrect = `Percentage Correct for this question: ${percent}%`;
-      }
-      console.log(this.props.feedback);
+    } else {
+      cardContent = <p>
+        {this.props.protectedData.question.toUpperCase()}
+      </p>
+    }
+    let percentageCorrect;
+    if (this.props.protectedData.guesses === 0) {
+      percentageCorrect = 'No score yet for this question';
+    } else {
+      let percent = Math.round(this.props.protectedData.correct / this.props.protectedData.guesses * 100);
+      percentageCorrect = `Percentage Correct for this question: ${percent}%`;
+    }
+    console.log(this.props.feedback);
 
-      return (
-        <main role="main" className="dashboard row">
-          {nameDisplay}
-          <div className="col-6 card-container">
+    return (
+      <main role="main" className="dashboard row">
+        {nameDisplay}
+        <div className="card-container">
           <div className="percentage">{percentageCorrect}</div>
-            <div className={`flashcard ${this.props.feedback}`}>
-              {cardContent}
-            </div>
+          <div className={`flashcard ${this.props.feedback}`}>
+            {cardContent}
           </div>
-          <form onSubmit={(e) => this.handleSubmit(e)}>
-            <label htmlFor="answer">
-              <input
-                type="text"
-                name="answer"
-                id="answer"
-                placeholder="english translation"
-                value={this.state.translation}
-                onChange={this.handleChange} />
-            </label>
-            <button type="submit" disabled={this.state.submitted}>submit</button>
-            <button type="button" onClick={() => this.skipButton()}>skip</button>
-          </form>
-          <UserProgress />
-        </main>
-      );
-    }
-    }
+        </div>
+        <form className="answer-form" onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="input-holder">
+          <label htmlFor="answer">
+            <input
+              type="text"
+              name="answer"
+              id="answer"
+              placeholder="english translation"
+              value={this.state.translation}
+              onChange={this.handleChange} />
+          </label>
+          </div>
+          <div className="button-holder">
+            <button type="submit" disabled={this.state.submitted}>Submit</button>
+            <button type="button" disabled={!this.state.submitted} onClick={() => this.skipButton()}>Next</button>
+          </div>
+        </form>
+        <UserProgress />
+      </main>
+    );
+  }
+}
+
 
 const mapStateToProps = state => {
   //const { currentUser } = state.auth;
