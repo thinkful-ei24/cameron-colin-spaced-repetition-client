@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Kalam', cursive;
-    background-color: #B8D8D8;
     color: #4F6367;
 }
 
@@ -15,10 +14,16 @@ button{
 button:hover{
     background-color: #EEF5DB;
     color: #4F6367;
+
 }
 
 html {
-    background: url(https://wallpapertag.com/wallpaper/full/e/6/7/113431-sea-background-2560x1600-download-free.jpg) no-repeat center center fixed;
+    background:
+    linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2)
+    ),
+    url(https://wallpapertag.com/wallpaper/full/e/6/7/113431-sea-background-2560x1600-download-free.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,8 +31,6 @@ html {
 }
 
 main {
-    background-color: #B8D8D8;
-    border: 2px solid #4F6367;
     border-radius: 8px;
     padding-top: 20px;
     padding-bottom: 20px;
