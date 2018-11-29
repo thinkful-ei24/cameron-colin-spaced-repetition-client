@@ -14,13 +14,13 @@ export class AddCard extends React.Component {
       english: ''
     };
   }
-  // componentDidMount() {
-  //   this.props.dispatch(clearSubmitted());
-  // }
+  componentDidMount() {
+    this.props.dispatch(clearSubmitted());
+  }
   addCard(e) {
     e.preventDefault();
     if (this.state.spanish === '' || this.state.english === '') {
-      this.dispatch(submitCardError('Fields cannot be null'))
+      this.props.dispatch(submitCardError('Fields cannot be null'))
     } else {
       this.props.dispatch(submitCard(this.state.spanish, this.state.english));
       this.setState({
@@ -56,7 +56,7 @@ export class AddCard extends React.Component {
       return (
         <div className="card-added">
           <p>Your card has been added!</p>
-          <button type="button" onClick={() => this.state.dispatch(clearSubmitted())}>Add another!</button>
+          <button type="button" onClick={() => this.props.dispatch(clearSubmitted())}>Add another!</button>
         </div>);
     }
     return (
@@ -86,7 +86,7 @@ const mapStateToProps = (state, props) => ({
   submitted: state.addCard.submitted
 })
 
-export default requiresLogin()(connect()(AddCard));
+export default requiresLogin()(connect(mapStateToProps)(AddCard));
 
 
 
