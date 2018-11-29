@@ -1,13 +1,13 @@
-
 .login-form {
-    border: 2px solid #4F6367;
     background-color: #EEF5DB;
+    border: 2px solid #4F6367;
     height: 300px;
     width: 80%;
     padding-top: 40px;
     padding-left: 24px;
     padding-right: 24px;
     margin-right: auto;
+    margin-left: auto;
     margin-top: 12px;
 }
 

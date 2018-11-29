@@ -13,7 +13,7 @@ export function LandingPage(props) {
 
   return (
     <div className="home row">
-      <div className="col-6 center">
+      <div className="col-6">
         <div className="welcome-message">
           <h2>Welcome to Echar Agua al Mar</h2>
           <p>Learn Spanish at your own pace ... and actually remember it!</p>
