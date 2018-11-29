@@ -3,6 +3,7 @@ h1 {
     color: #4F6367;
     margin-top: 20px;
     font-family: 'Permanent Marker', cursive;
+    text-shadow: 0 1px 0 white;
 }
 
 #logout {
