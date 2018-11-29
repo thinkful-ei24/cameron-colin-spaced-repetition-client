@@ -48,3 +48,19 @@
   border-radius: 5%;
   margin-bottom: 10px;  
 }
+
+.error{
+  color: red;
+  width: 500px;
+  max-width: 80%;
+}
+
+.dashboard-link{
+  position: absolute;
+  top: 5px; 
+  right: 75px;
+  font-family: 'Kalam', cursive;
+  font-size: 15px;
+  border: 1px solid #F0F7F4;
+  border-radius: 5%;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import {Link, Redirect} from 'react-router-dom';
 import './add-card.css';
 import { submitCard, submitCardError, clearSubmitted } from '../actions/add-card';
 
@@ -13,9 +14,9 @@ export class AddCard extends React.Component {
       english: ''
     };
   }
-  componentDidMount() {
-    this.props.dispatch(clearSubmitted());
-  }
+  // componentDidMount() {
+  //   this.props.dispatch(clearSubmitted());
+  // }
   addCard(e) {
     e.preventDefault();
     if (this.state.spanish === '' || this.state.english === '') {
@@ -61,6 +62,7 @@ export class AddCard extends React.Component {
     return (
       <div className="add-card">
         <h2>Add a new card to practice!</h2>
+        <Link to='/dashboard'><button className="dashboard-link">Keep Practicing</button></Link>
         {error}
         <form className="add-card-form" onSubmit={(e) => this.addCard(e)}>
           <label htmlFor="spanish">Spanish:</label>

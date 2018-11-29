@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import UserProgress from './user-progress.js';
+import {Link} from 'react-router-dom';
 import { fetchProtectedData, updateProtectedData } from '../actions/protected-data';
 //import { translations } from './data';
 import { updateData } from '../actions/update-data';
@@ -89,6 +90,7 @@ export class Dashboard extends React.Component {
     return (
       <main role="main" className="dashboard row">
         {nameDisplay}
+        <Link to='/addcard'><button className="add-link">Add a New Card</button></Link>
         <div className="card-container">
           <div className="percentage">{percentageCorrect}</div>
           <div lang="es" className={`flashcard ${this.props.feedback}`} aria-label={this.props.feedback} aria-live="polite">

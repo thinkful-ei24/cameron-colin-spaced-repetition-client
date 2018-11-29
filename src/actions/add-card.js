@@ -40,7 +40,6 @@ export const submitCard = (question, answer) => (dispatch, getState) => {
       dispatch(submitCardSuccess(result))
     })
     .catch(err => {
-      console.log('hitting an error')
       dispatch(submitCardError(err))
     })
 }
