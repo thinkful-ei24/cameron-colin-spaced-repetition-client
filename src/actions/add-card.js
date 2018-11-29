@@ -17,25 +17,30 @@ export const submitCardError = (error) => ({
   error
 });
 
+export const CLEAR_SUBMITTED = 'CLEAR_SUBMITTED';
+export const clearSubmitted= () => ({
+  type: CLEAR_SUBMITTED
+});
+
+
 export const submitCard = (question, answer) => (dispatch, getState) => {
   const data = {question: question.toUpperCase(), answer: answer.toUpperCase()}
   const authToken = getState().auth.authToken;
-  console.log(data);
-  // dispatch(sendAnswerRequest())
-  // return fetch(`${API_BASE_URL}/questions`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Authorization: `Bearer ${authToken}`
-  //   },
-  //   body: JSON.stringify(data)
-  // })
-  //   .then(result => result.json())
-  //   .then(result => {
-  //     dispatch(sendAnswerSuccess(result))
-  //   })
-  //   .catch(err => {
-  //     console.log('hitting an error')
-  //     dispatch(sendAnswerError(err))
-  //   })
+  dispatch(submitCardRequest())
+  return fetch(`${API_BASE_URL}/questions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(data)
+  })
+    .then(result => result.json())
+    .then(result => {
+      dispatch(submitCardSuccess(result))
+    })
+    .catch(err => {
+      console.log('hitting an error')
+      dispatch(submitCardError(err))
+    })
 }

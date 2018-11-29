@@ -27,3 +27,24 @@
 .add-card-form label{
   font-size: 20px;
 }
+
+.card-added{
+  background-color: #EEF5DB;
+  border: 2px solid #4F6367;
+  width: 500px;
+  max-width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 30px;
+  padding: 5px;
+}
+
+.card-added button{
+  width: 50%;
+  height: 35px;
+  font-family: 'Kalam', cursive;
+  font-size: 15px;
+  border: 1px solid #EEF5DB;
+  border-radius: 5%;
+  margin-bottom: 10px;  
+}
