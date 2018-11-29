@@ -53,13 +53,13 @@ export class Dashboard extends React.Component {
     })
   }
 
-
   render() {
     console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
     }
+    
     let cardContent;
     if (this.state.submitted && this.props.protectedData.answer) {
       cardContent = <p>
@@ -70,6 +70,7 @@ export class Dashboard extends React.Component {
         {this.props.protectedData.question.toUpperCase()}
       </p>
     }
+
     let percentageCorrect;
     if (this.props.protectedData.guesses === 0) {
       percentageCorrect = 'No score yet for this question';
@@ -77,7 +78,13 @@ export class Dashboard extends React.Component {
       let percent = Math.round(this.props.protectedData.correct / this.props.protectedData.guesses * 100);
       percentageCorrect = `Percentage Correct for this question: ${percent}%`;
     }
-    console.log(this.props.feedback);
+
+    let hideOrShowProgress;
+    if(this.state.showProgress){
+      hideOrShowProgress = 'Hide User Progress';
+    }else{
+      hideOrShowProgress = 'Show User Progress';
+    }
 
     return (
       <main role="main" className="dashboard row">
@@ -106,7 +113,7 @@ export class Dashboard extends React.Component {
           </div>
         </form>
         <div className="progress-button-holder">
-          <button type="button" onClick={() => this.showProgress()}>User Stats</button>
+          <button type="button" onClick={() => this.showProgress()}>{hideOrShowProgress}</button>
         </div>
         {this.state.showProgress && <UserProgress />}
       </main>
