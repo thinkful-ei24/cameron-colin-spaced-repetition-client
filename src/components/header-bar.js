@@ -22,10 +22,10 @@ export class HeaderBar extends React.Component {
       );
     }
     return (
-      <div className="header-bar">
+      <nav role="navigation" className="header-bar">
         <h1>Echar Agua al Mar</h1>
         {logOutButton}
-      </div>
+      </nav>
     );
   }
   }

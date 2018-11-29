@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ProgressQuestion from './progress-question.js';
 import {getUserProgress} from '../actions/user-progress.js';
 import './user-progress.css';
+import './user-progress.css';
 
 export class UserProgress extends React.Component {
   constructor(props) {
@@ -23,10 +24,10 @@ export class UserProgress extends React.Component {
     })
 
     return (
-      <div className="row">
+      <section aria-live="polite" className="row user-progress">
         <h2>user progress</h2>
         <ul className="row">{listOfWords}</ul>
-      </div>
+      </section>
     )
   }
 }

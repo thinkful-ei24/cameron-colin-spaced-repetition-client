@@ -59,11 +59,11 @@ export class Dashboard extends React.Component {
     if (this.newLogIn) {
       nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
     }
-    
+
     let cardContent;
     if (this.state.submitted && this.props.protectedData.answer) {
       cardContent = <p>
-        {`${this.props.protectedData.question.toUpperCase()} / ${this.props.protectedData.answer.toUpperCase()}`}
+        {`${this.props.protectedData.question.toUpperCase()} /`} <span lang="en">{`${this.props.protectedData.answer.toUpperCase()}`}</span>
       </p>
     } else {
       cardContent = <p>
@@ -91,7 +91,7 @@ export class Dashboard extends React.Component {
         {nameDisplay}
         <div className="card-container">
           <div className="percentage">{percentageCorrect}</div>
-          <div className={`flashcard ${this.props.feedback}`}>
+          <div lang="es" className={`flashcard ${this.props.feedback}`} aria-label={this.props.feedback} aria-live="polite">
             {cardContent}
           </div>
         </div>
@@ -116,7 +116,10 @@ export class Dashboard extends React.Component {
           <button type="button" onClick={() => this.showProgress()}>{hideOrShowProgress}</button>
         </div>
         {this.state.showProgress && <UserProgress />}
-        {this.state.showProgress && <button type="button" onClick={() => this.showProgress()}>Hide Stats</button>}
+        {this.state.showProgress &&
+        <div className="progress-button-holder">
+          <button type="button" className="hide-button" onClick={() => this.showProgress()}>Hide Stats</button>
+        </div>}
       </main>
     );
   }
