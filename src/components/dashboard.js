@@ -109,6 +109,7 @@ export class Dashboard extends React.Component {
           <button type="button" onClick={() => this.showProgress()}>User Stats</button>
         </div>
         {this.state.showProgress && <UserProgress />}
+        {this.state.showProgress && <button type="button" onClick={() => this.showProgress()}>Hide Stats</button>}
       </main>
     );
   }
