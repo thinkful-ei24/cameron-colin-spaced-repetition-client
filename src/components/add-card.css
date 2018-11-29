@@ -23,3 +23,7 @@
   border: 2px solid #4F6367;
   max-width: 95%;
 }
+
+.add-card-form label{
+  font-size: 20px;
+}
