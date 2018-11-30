@@ -17,7 +17,6 @@ export class Dashboard extends React.Component {
       submitted: false,
       showProgress: false
     }
-
   }
   componentDidMount() {
     // should fetch HEAD
@@ -55,7 +54,6 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
