@@ -12,7 +12,7 @@ export class ProgressQuestion extends React.Component {
   hasNotGuessed = <p>no data yet</p>;
 
   deleteClick(){
-    this.props.dispatch(deleteCard(this.props.question, this.props.guesses, this.props.correct));
+    this.props.dispatch(deleteCard(this.props._id));
   };
 
   render(){

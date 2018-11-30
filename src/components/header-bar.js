@@ -8,6 +8,7 @@ export class HeaderBar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
+    alert("You've been successfully logged out!")
   }
 
   render() {

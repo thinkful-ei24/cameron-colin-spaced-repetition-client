@@ -18,7 +18,6 @@ export default function progressReducer(state = initialState, action) {
       loading: true
     })
   } else if (action.type === FETCH_QUESTIONS_SUCCESS) {
-      console.log(action.questions)
     return Object.assign({}, state, {
       questions: action.questions,
       loading: false

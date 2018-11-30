@@ -18,8 +18,8 @@ export const deleteCardError = (error) => ({
 });
 
 
-export const deleteCard = (question, guesses, correct) => (dispatch, getState) => {
-  const data = {question: question.toUpperCase(), guesses, correct}
+export const deleteCard = (_id) => (dispatch, getState) => {
+  const data = {_id};
   const authToken = getState().auth.authToken;
   dispatch(deleteCardRequest())
   return fetch(`${API_BASE_URL}/questions`, {
