@@ -1,0 +1,9 @@
+.logged-out{
+  background-color: #EEF5DB;
+  border: 2px solid #4F6367;
+  width: 500px;
+  max-width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}

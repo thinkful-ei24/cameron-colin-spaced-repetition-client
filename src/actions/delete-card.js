@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {fetchQuestionsRequest, fetchQuestionsError} from './user-progress';
 
 export const DELETE_CARD_REQUEST = 'DELETE_CARD_REQUEST';
 export const deleteCardRequest = () => ({
@@ -7,8 +8,9 @@ export const deleteCardRequest = () => ({
 });
 
 export const DELETE_CARD_SUCCESS = 'DELETE_CARD_SUCCESS';
-export const deleteCardSuccess= () => ({
-  type: DELETE_CARD_SUCCESS
+export const deleteCardSuccess= (id) => ({
+  type: DELETE_CARD_SUCCESS,
+  id
 });
 
 export const DELETE_CARD_ERROR = 'DELETE_CARD_ERROR';
@@ -21,7 +23,7 @@ export const deleteCardError = (error) => ({
 export const deleteCard = (_id) => (dispatch, getState) => {
   const data = {_id};
   const authToken = getState().auth.authToken;
-  dispatch(deleteCardRequest())
+  // dispatch(fetchQuestionsRequest())
   return fetch(`${API_BASE_URL}/questions`, {
     method: 'DELETE',
     headers: {
@@ -31,10 +33,8 @@ export const deleteCard = (_id) => (dispatch, getState) => {
     body: JSON.stringify(data)
   })
     .then(result => result.json())
-    .then(result => {
-      dispatch(deleteCardSuccess(result))
-    })
+    .then(result => dispatch(deleteCardSuccess(_id)))
     .catch(err => {
-      dispatch(deleteCardError(err))
+      dispatch(fetchQuestionsError(err))
     })
 }

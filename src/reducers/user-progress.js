@@ -4,6 +4,10 @@ import {
   FETCH_QUESTIONS_ERROR
 } from '../actions/user-progress.js';
 
+import {
+  DELETE_CARD_SUCCESS
+} from '../actions/delete-card';
+
 const initialState = {
   questions: [],
   error: null,
@@ -18,6 +22,7 @@ export default function progressReducer(state = initialState, action) {
       loading: true
     })
   } else if (action.type === FETCH_QUESTIONS_SUCCESS) {
+    console.log('called');
     return Object.assign({}, state, {
       questions: action.questions,
       loading: false
@@ -26,6 +31,11 @@ export default function progressReducer(state = initialState, action) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error
+    })
+  } else if (action.type === DELETE_CARD_SUCCESS){
+    return Object.assign({}, state, {
+      loading: false,
+      questions: state.questions.filter(question => question.id !== action.id)
     })
   }
   return state;

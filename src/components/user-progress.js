@@ -18,6 +18,9 @@ export class UserProgress extends React.Component {
   }
 
   render() {
+    if(this.props.progress.questions.length === 0){
+      return <div>Add Cards to See Progress</div>
+    }
     const listOfWords = this.props.progress.questions.map((question, index) => {
       return <ProgressQuestion key={question._id} index={index} {...question}/>
     })
