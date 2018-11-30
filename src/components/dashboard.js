@@ -62,7 +62,7 @@ export class Dashboard extends React.Component {
     }
     let error;
     if (this.props.error) {
-      error = <div className="error">{this.props.error}</div>
+      error = <div className="error">{this.props.error.message}</div>
     }
 
     let cardContent;

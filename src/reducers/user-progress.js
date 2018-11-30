@@ -33,6 +33,7 @@ export default function progressReducer(state = initialState, action) {
       error: action.error
     })
   } else if (action.type === DELETE_CARD_SUCCESS){
+    console.log('called here')
     return Object.assign({}, state, {
       loading: false,
       questions: state.questions.filter(question => question.id !== action.id)

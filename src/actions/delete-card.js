@@ -23,7 +23,7 @@ export const deleteCardError = (error) => ({
 export const deleteCard = (_id) => (dispatch, getState) => {
   const data = {_id};
   const authToken = getState().auth.authToken;
-  // dispatch(fetchQuestionsRequest())
+  dispatch(fetchQuestionsRequest());
   return fetch(`${API_BASE_URL}/questions`, {
     method: 'DELETE',
     headers: {

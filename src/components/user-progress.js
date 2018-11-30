@@ -14,7 +14,7 @@ export class UserProgress extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getUserProgress())
+    this.props.dispatch(getUserProgress());
   }
 
   render() {
@@ -22,7 +22,7 @@ export class UserProgress extends React.Component {
       return <div>Add Cards to See Progress</div>
     }
     const listOfWords = this.props.progress.questions.map((question, index) => {
-      return <ProgressQuestion key={question._id} index={index} {...question}/>
+      return <ProgressQuestion key={index} index={index} {...question}/>
     })
 
     return (
