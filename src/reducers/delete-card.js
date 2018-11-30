@@ -1,7 +1,7 @@
 import {
-  SUBMIT_CARD_REQUEST,
-  SUBMIT_CARD_SUCCESS,
-  SUBMIT_CARD_ERROR
+  DELETE_CARD_REQUEST,
+  DELETE_CARD_SUCCESS,
+  DELETE_CARD_ERROR
 } from '../actions/delete-card';
 
 const initialState = {

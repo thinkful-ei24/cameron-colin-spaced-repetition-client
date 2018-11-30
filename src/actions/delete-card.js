@@ -2,17 +2,17 @@ import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const DELETE_CARD_REQUEST = 'DELETE_CARD_REQUEST';
-export const DeleteCardRequest = () => ({
+export const deleteCardRequest = () => ({
   type: DELETE_CARD_REQUEST
 });
 
 export const DELETE_CARD_SUCCESS = 'DELETE_CARD_SUCCESS';
-export const DeleteCardSuccess= () => ({
+export const deleteCardSuccess= () => ({
   type: DELETE_CARD_SUCCESS
 });
 
 export const DELETE_CARD_ERROR = 'DELETE_CARD_ERROR';
-export const DeleteCardError = (error) => ({
+export const deleteCardError = (error) => ({
   type: DELETE_CARD_ERROR,
   error
 });

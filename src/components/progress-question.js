@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './progress-question.css';
+import {deleteCard} from '../actions/delete-card';
 
 export class ProgressQuestion extends React.Component {
   constructor(props){
@@ -11,7 +12,7 @@ export class ProgressQuestion extends React.Component {
   hasNotGuessed = <p>no data yet</p>;
 
   deleteClick(){
-    console.log('delete')
+    this.props.dispatch(deleteCard(this.props.question, this.props.guesses, this.props.correct));
   };
 
   render(){
@@ -25,7 +26,6 @@ export class ProgressQuestion extends React.Component {
       </li>
     )
   }
-
 }
 
 export default connect()(ProgressQuestion);

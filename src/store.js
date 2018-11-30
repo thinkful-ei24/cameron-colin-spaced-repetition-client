@@ -6,6 +6,7 @@ import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import progressReducer from './reducers/user-progress.js';
 import addCardReducer from './reducers/add-card';
+import deleteCardReducer from './reducers/delete-card';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
@@ -14,7 +15,8 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         progress: progressReducer,
-        addCard: addCardReducer
+        addCard: addCardReducer,
+        deleteCard: deleteCardReducer
     }),
     applyMiddleware(thunk)
 );
