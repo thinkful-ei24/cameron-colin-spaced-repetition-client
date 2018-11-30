@@ -18,7 +18,6 @@ export class UserProgress extends React.Component {
   }
 
   render() {
-    console.log(this.props.progress)
     const listOfWords = this.props.progress.questions.map((question, index) => {
       return <ProgressQuestion key={index} index={index} {...question}/>
     })

@@ -55,10 +55,14 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props.protectedData)
+
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
+    }
+    let error;
+    if (this.props.error) {
+      error = <div className="error">{this.props.error}</div>
     }
 
     let cardContent;
@@ -92,6 +96,7 @@ export class Dashboard extends React.Component {
         {nameDisplay}
         <Link to='/addcard'><button className="add-link">Add a New Card</button></Link>
         <div className="card-container">
+          {error}
           <div className="percentage">{percentageCorrect}</div>
           <div lang="es" className={`flashcard ${this.props.feedback}`} aria-label={this.props.feedback} aria-live="polite">
             {cardContent}
@@ -134,7 +139,9 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     protectedData: state.protectedData.data,
     currentUser: state.auth.currentUser,
-    feedback: state.protectedData.feedback
+    feedback: state.protectedData.feedback,
+    loading: state.protectedData.loading,
+    error: state.protectedData.error
   };
 };
 

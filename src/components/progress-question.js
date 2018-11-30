@@ -2,20 +2,31 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './progress-question.css';
 
-export default function ProgressQuestion(props) {
-console.log(props)
+export class ProgressQuestion extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
-  const hasGuessed = <p>{Math.floor(props.correct/props.guesses*100)}% success rate</p>;
-  const hasNotGuessed = <p>no data yet</p>;
+  hasGuessed = <p>{Math.floor(this.props.correct/this.props.guesses*100)}% success rate</p>;
+  hasNotGuessed = <p>no data yet</p>;
 
-  return (
-    <li id={props.index} className="col-3">
-      <button className="delete-button">
-        <i class="fa fa-trash" aria-hidden="true">
-        </i></button>
-      <h3>{props.question}</h3>
-      {props.guesses ? hasGuessed : hasNotGuessed}
-    </li>
-  )
+  deleteClick(){
+    console.log('delete')
+  };
+
+  render(){
+    return (
+      <li id={this.props.index} className="col-3">
+        <button className="delete-button" onClick={() => this.deleteClick()}>
+          <i className="fa fa-trash" aria-hidden="true">
+          </i></button>
+        <h3>{this.props.question}</h3>
+        {this.props.guesses ? this.hasGuessed : this.hasNotGuessed}
+      </li>
+    )
+  }
+
 }
+
+export default connect()(ProgressQuestion);
 

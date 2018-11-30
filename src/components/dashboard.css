@@ -121,6 +121,12 @@
     border-radius: 5%;
   }
 
+.error{
+    color: red;
+    width: 500px;
+    max-width: 80%;
+  }  
+
 @media only screen and (min-width: 640px){
     #answer{
         height: 50px;
