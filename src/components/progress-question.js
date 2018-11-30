@@ -10,6 +10,9 @@ console.log(props)
 
   return (
     <li id={props.index} className="col-3">
+      <button className="delete-button">
+        <i class="fa fa-trash" aria-hidden="true">
+        </i></button>
       <h3>{props.question}</h3>
       {props.guesses ? hasGuessed : hasNotGuessed}
     </li>

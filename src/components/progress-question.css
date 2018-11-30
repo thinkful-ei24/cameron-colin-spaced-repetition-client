@@ -4,8 +4,29 @@ li {
     border-radius: 8px;
     background-color: #EEF5DB;
     min-width: 197px;
+    position: relative;
 }
 
 h3, p {
     margin-left: 6px;
+}
+
+.delete-button{
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    background-color: #EEF5DB;
+    color: #4F6367;
+    border: none;
+    padding: 0;
+    font-size: 17px;   
+}
+
+.delete-button:hover{
+    background-color: #4F6367;
+    color: #EEF5DB;    
+}
+
+.fa-trash{
+    size: 20px;
 }
