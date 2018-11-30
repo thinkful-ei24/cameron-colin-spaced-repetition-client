@@ -54,9 +54,12 @@ export class AddCard extends React.Component {
     }
     if (this.props.submitted) {
       return (
+        <div>
+        <Link to='/dashboard'><button className="dashboard-link">Keep Practicing</button></Link>
         <div className="card-added">
           <p>Your card has been added!</p>
           <button type="button" onClick={() => this.props.dispatch(clearSubmitted())}>Add another!</button>
+        </div>
         </div>);
     }
     return (
