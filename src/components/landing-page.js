@@ -14,14 +14,14 @@ export function LandingPage(props) {
   return (
     <div className="home row">
       <div className="col-6">
-        <div className="welcome-message">
+        <section className="welcome-message">
           <h2>Welcome to Echar Agua al Mar</h2>
           <p>Learn Spanish at your own pace ... and actually remember it!</p>
-        </div>
+        </section>
       </div>
-      <div className="col-6">
+      <section className="col-6">
         <LoginForm />
-      </div>
+      </section>
     </div>
   );
 }
