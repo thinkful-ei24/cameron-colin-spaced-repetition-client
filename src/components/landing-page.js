@@ -17,6 +17,9 @@ export function LandingPage(props) {
         <div className="welcome-message">
           <h2>Welcome to Echar Agua al Mar</h2>
           <p>Learn Spanish at your own pace ... and actually remember it!</p>
+          <h3>Demo Credentials</h3>
+          <p>username: demo_user</p>
+          <p>password: password321</p>
         </div>
       </div>
       <div className="col-6">

@@ -1,3 +1,6 @@
+a, a:visited {
+    color: #34a3ce;
+}
 .login-form {
     background-color: #EEF5DB;
     border: 2px solid #4F6367;
@@ -34,6 +37,7 @@
     padding: 4px;
     font-size: 12px;
     font-weight: bold;
+    width: 174px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     text-decoration: none;
