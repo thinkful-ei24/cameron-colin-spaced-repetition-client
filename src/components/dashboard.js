@@ -17,7 +17,6 @@ export class Dashboard extends React.Component {
       submitted: false,
       showProgress: false
     }
-
   }
   componentDidMount() {
     // should fetch HEAD
@@ -55,7 +54,6 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props.protectedData)
     let nameDisplay;
     if (this.newLogIn) {
       nameDisplay = <div className="name"><p>Welcome {this.props.username}!</p></div>
@@ -91,14 +89,14 @@ export class Dashboard extends React.Component {
       <main role="main" className="dashboard row">
         {nameDisplay}
         <Link to='/addcard'><button className="add-link">Add a New Card</button></Link>
-        <div className="card-container">
+        <section className="card-container">
           <div className="percentage">{percentageCorrect}</div>
-          <div lang="es" className={`flashcard ${this.props.feedback}`} aria-label={this.props.feedback} aria-live="polite">
+          <article lang="es" className={`flashcard ${this.props.feedback}`} aria-label={this.props.feedback} aria-live="polite">
             {cardContent}
-          </div>
-        </div>
+          </article>
+        </section>
         <form className="answer-form" onSubmit={(e) => this.handleSubmit(e)}>
-          <div className="input-holder">
+          <section className="input-holder">
           <label htmlFor="answer">
             <input
               type="text"
@@ -108,20 +106,20 @@ export class Dashboard extends React.Component {
               value={this.state.translation}
               onChange={this.handleChange} />
           </label>
-          </div>
-          <div className="button-holder">
+          </section>
+          <section className="button-holder">
             <button type="submit" disabled={this.state.submitted}>Submit</button>
             <button type="button" disabled={!this.state.submitted} onClick={() => this.skipButton()}>Next</button>
-          </div>
+          </section>
         </form>
-        <div className="progress-button-holder">
+        <section className="progress-button-holder">
           <button type="button" onClick={() => this.showProgress()}>{hideOrShowProgress}</button>
-        </div>
+        </section>
         {this.state.showProgress && <UserProgress />}
         {this.state.showProgress &&
-        <div className="progress-button-holder">
+        <section className="progress-button-holder">
           <button type="button" className="hide-button" onClick={() => this.showProgress()}>Hide Stats</button>
-        </div>}
+        </section>}
       </main>
     );
   }

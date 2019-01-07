@@ -14,14 +14,14 @@ export function RegistrationPage(props) {
     return (
         <div className="home row">
           <div className="col-6 center">
-            <div className="welcome-message">
+            <section className="welcome-message">
               <h2>Register for Echar Agua al Mar!</h2>
               <p>Learn Spanish at your own pace ... and actually remember it!</p>
-            </div>
+            </section>
           </div>
-          <div className="col-6 center">
+          <section className="col-6 center">
             <RegistrationForm />
-          </div>
+          </section>
         </div>
     );
 }
